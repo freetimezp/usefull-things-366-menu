@@ -180,3 +180,50 @@ img {
     opacity: 1;
     transform: rotate(90deg);
 }
+
+@media screen and (min-width: 540px) {
+    .profile__card {
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .profile {
+        margin-inline: auto;
+    }
+    .profile__card {
+        width: 320px;
+        height: 100px;
+    }
+    .profile__content {
+        column-gap: 0.75rem;
+    }
+    .profile__img {
+        width: 100px;
+        height: 100px;
+    }
+    .profile__button {
+        margin-right: 0.75rem;
+    }
+    .profile__social {
+        width: 125px;
+        height: 125px;
+        right: -2rem;
+    }
+
+    .show-social .profile__link:nth-child(1) {
+        transform: rotate(-85deg) translateX(96px) rotate(85deg);
+    }
+    .show-social .profile__link:nth-child(2) {
+        transform: rotate(-45deg) translateX(96px) rotate(45deg);
+    }
+    .show-social .profile__link:nth-child(3) {
+        transform: rotate(0deg) translateX(96px) rotate(0deg);
+    }
+    .show-social .profile__link:nth-child(4) {
+        transform: rotate(45deg) translateX(96px) rotate(-45deg);
+    }
+    .show-social .profile__link:nth-child(5) {
+        transform: rotate(85deg) translateX(96px) rotate(-85deg);
+    }
+}
