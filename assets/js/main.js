@@ -13,7 +13,6 @@ const positions = [
 
 let opened = false;
 
-// initial state
 gsap.set(social, {
     scale: 0,
     opacity: 0,
@@ -99,19 +98,6 @@ btn.addEventListener("click", () => {
     } else {
         const tl = gsap.timeline();
 
-        tl.to(links, {
-            x: 0,
-            y: 0,
-            scale: 0,
-            opacity: 0,
-            duration: 0.4,
-            stagger: {
-                each: 0.04,
-                from: "end",
-            },
-            ease: "power3.in",
-        });
-
         tl.to(
             social,
             {
@@ -128,16 +114,18 @@ btn.addEventListener("click", () => {
             "-=0.15"
         );
 
-        tl.to(
-            ".profile__close",
-            {
-                rotate: 180,
-                scale: 0,
-                opacity: 0,
-                duration: 0.2,
+        tl.to(links, {
+            x: 0,
+            y: 0,
+            scale: 0,
+            opacity: 0,
+            duration: 0.4,
+            stagger: {
+                each: 0.04,
+                from: "out",
             },
-            0
-        );
+            ease: "power3.in",
+        });
 
         tl.to(
             ".profile__menu",
@@ -150,41 +138,18 @@ btn.addEventListener("click", () => {
             0.1
         );
 
+        tl.to(
+            ".profile__close",
+
+            {
+                rotate: 180,
+                scale: 0,
+                opacity: 0,
+                duration: 0.2,
+            },
+            0
+        );
+
         opened = false;
     }
-});
-
-gsap.to(".profile__card", {
-    y: -8,
-    repeat: -1,
-    yoyo: true,
-    duration: 2,
-    ease: "sine.inOut",
-});
-
-const card = document.querySelector(".profile__card");
-
-card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const rotateY = (x / rect.width - 0.5) * 15;
-    const rotateX = (y / rect.height - 0.5) * -15;
-
-    gsap.to(card, {
-        rotateX,
-        rotateY,
-        duration: 0.5,
-    });
-});
-
-card.addEventListener("mouseleave", () => {
-    gsap.to(card, {
-        rotateX: 0,
-        rotateY: 0,
-        duration: 1,
-        ease: "elastic.out(1,0.5)",
-    });
 });
